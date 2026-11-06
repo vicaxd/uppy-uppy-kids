@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0A86FF">
+<meta name="theme-color" content="#3B7CF4">
 <title>Uppy Uppy Kids | Locação de Brinquedos Infláveis</title>
 <meta name="description" content="Locação de brinquedos infláveis, camas elásticas, brinquedos aquáticos e monitores em Capão da Canoa e região. Festa completa em um só lugar com a Uppy Uppy Kids.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -470,14 +470,10 @@ section{padding:60px 0}
 .dest2 span{font-size:.8rem;color:var(--suave);font-weight:700;line-height:1.3}
 @media(max-width:600px){.destaques2{gap:8px}.dest2{padding:12px 6px;border-radius:16px}.dest2 .ic{width:38px;height:38px;font-size:1.15rem;border-radius:12px}.dest2 b{font-size:.92rem}.dest2 span{font-size:.7rem}}
 
-/* iPhone: cores atrás da barra de status e da barra do Safari */
-html{background:#0A86FF}
-html.intro-on,html.intro-on body{background:#0A86FF}
-#intro{top:calc(-1 * env(safe-area-inset-top));bottom:calc(-1 * env(safe-area-inset-bottom));padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
-#intro .pular{bottom:calc(18px + env(safe-area-inset-bottom))}
-header{padding-top:env(safe-area-inset-top)}
-footer{padding-bottom:calc(30px + env(safe-area-inset-bottom))}
-.zap-flut{bottom:calc(18px + env(safe-area-inset-bottom))}
+
+/* cor das barras do celular: azul na abertura, clareia suave depois */
+html{background:#F6F9FF;transition:background-color .9s ease}
+html.intro-on{background:#3B7CF4}
 </style>
 </head>
 <body>
@@ -486,9 +482,9 @@ footer{padding-bottom:calc(30px + env(safe-area-inset-bottom))}
 #intro{position:fixed;inset:0;z-index:9999;overflow:hidden;display:grid;place-items:center;
   background:
     radial-gradient(circle at 50% 45%,rgba(120,200,255,.45),transparent 42%),
-    radial-gradient(circle at 100% 0%,rgba(0,214,255,.5),transparent 40%),
-    radial-gradient(circle at 0% 100%,rgba(123,53,232,.65),transparent 50%),
-    linear-gradient(160deg,#18A4FF 0%,#0282FD 45%,#3557F0 100%);
+    radial-gradient(circle at 85% 30%,rgba(0,214,255,.3),transparent 35%),
+    radial-gradient(circle at 15% 70%,rgba(123,53,232,.35),transparent 40%),
+    linear-gradient(180deg,#3B7CF4 0%,#4A9BFF 30%,#3F6FF0 72%,#3B7CF4 100%);
   transition:transform .85s cubic-bezier(.7,0,.25,1),border-radius .85s;cursor:pointer}
 #intro.sai{transform:translateY(-105%);border-radius:0 0 50% 50%/0 0 18% 18%}
 #intro .estrela{position:absolute;width:var(--t);height:var(--t);border-radius:50%;background:#fff;opacity:.2;animation:pisca var(--d) ease-in-out infinite alternate}
@@ -627,6 +623,7 @@ body.intro-on{overflow:hidden}
     if (saiu) return; saiu = true;
     intro.classList.add('sai');
     document.body.classList.remove('intro-on'); document.documentElement.classList.remove('intro-on');
+    const tc = document.querySelector('meta[name="theme-color"]'); if (tc) setTimeout(() => tc.setAttribute('content', '#F6F9FF'), 450);
     setTimeout(() => intro.remove(), 950);
   }
   setTimeout(sair, 3600);
