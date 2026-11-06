@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A86FF">
 <title>Uppy Uppy Kids | Locação de Brinquedos Infláveis</title>
 <meta name="description" content="Locação de brinquedos infláveis, camas elásticas, brinquedos aquáticos e monitores em Capão da Canoa e região. Festa completa em um só lugar com a Uppy Uppy Kids.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -468,6 +469,15 @@ section{padding:60px 0}
 .dest2 b{font-family:'Fredoka',system-ui,sans-serif;font-weight:600;font-size:1.1rem;line-height:1.15;color:var(--tinta)}
 .dest2 span{font-size:.8rem;color:var(--suave);font-weight:700;line-height:1.3}
 @media(max-width:600px){.destaques2{gap:8px}.dest2{padding:12px 6px;border-radius:16px}.dest2 .ic{width:38px;height:38px;font-size:1.15rem;border-radius:12px}.dest2 b{font-size:.92rem}.dest2 span{font-size:.7rem}}
+
+/* iPhone: cores atrás da barra de status e da barra do Safari */
+html{background:#0A86FF}
+html.intro-on,html.intro-on body{background:#0A86FF}
+#intro{top:calc(-1 * env(safe-area-inset-top));bottom:calc(-1 * env(safe-area-inset-bottom));padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+#intro .pular{bottom:calc(18px + env(safe-area-inset-bottom))}
+header{padding-top:env(safe-area-inset-top)}
+footer{padding-bottom:calc(30px + env(safe-area-inset-bottom))}
+.zap-flut{bottom:calc(18px + env(safe-area-inset-bottom))}
 </style>
 </head>
 <body>
@@ -600,7 +610,7 @@ body.intro-on{overflow:hidden}
   const intro = document.getElementById('intro');
   if (!intro) return;
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { intro.remove(); return; }
-  document.body.classList.add('intro-on');
+  document.body.classList.add('intro-on'); document.documentElement.classList.add('intro-on');
   // estrelas
   for (let i = 0; i < 46; i++) {
     const e = document.createElement('i'); e.className = 'estrela';
@@ -616,7 +626,7 @@ body.intro-on{overflow:hidden}
   function sair(){
     if (saiu) return; saiu = true;
     intro.classList.add('sai');
-    document.body.classList.remove('intro-on');
+    document.body.classList.remove('intro-on'); document.documentElement.classList.remove('intro-on');
     setTimeout(() => intro.remove(), 950);
   }
   setTimeout(sair, 3600);
